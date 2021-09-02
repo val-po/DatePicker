@@ -8,14 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var  date = Date()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack{
+                DatePicker("Trip Date",
+                       selection: $date,
+                       in: Date()...)
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .padding()
+        }
+        .navigationTitle("Select Dates")
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.dark)
     }
 }
